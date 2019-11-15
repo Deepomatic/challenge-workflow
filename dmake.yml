@@ -1,0 +1,37 @@
+dmake_version: 0.1
+app_name: deepo-challenge
+env:
+  default:
+    variables:
+      DEEPOMATIC_API_KEY: ${DEEPOMATIC_API_KEY}
+docker:
+  mount_point: /app
+  base_image:
+    name: deepomatic/deepo-challenge
+    root_image: ubuntu:18.04
+    copy_files:
+      - deploy/base/build/requirements.txt
+    install_scripts:
+      - deploy/base/build/install.sh
+
+docker_links:
+  - &docker_link_db
+    image_name: postgres:12.0
+    link_name: db
+    # volumes:
+    #   - ${DB_PATH}/data:/var/lib/postgresql/data
+    env_exports:
+      POSTGRE_URL: postgres://postgres:nopassword@db:5432/postgres
+      TASK_BACKEND_URL: db+postgres://postgres:nopassword@db:5432/postgres
+
+services:
+  - service_name: web
+    needed_links:
+      - db
+    config:
+      docker_image:
+        name: deepomatic/challenge
+        # start_script: /app/challenge/manage.py runserver 0.0.0.0:8000
+      ports:
+        - container_port: 8000
+          host_port: 8000
