@@ -3,7 +3,7 @@ from rest_framework.test import APITestCase
 from rest_framework import status
 from api.models import NeuralNetwork
 
-class TestNN(APITestCase):
+class TestModel(APITestCase):
     """
     Test the endpoints for the NeuralWorker model
     """
@@ -12,14 +12,14 @@ class TestNN(APITestCase):
         cls.nn = NeuralNetwork.objects.get(name="imagenet-inception-v3")
 
     def test_list(self):
-        url = '/api/nn/'
+        url = '/api/model/'
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         data = response.json()
         self.assertEqual(NeuralNetwork.objects.all().count(), len(data))
 
     def test_get(self):
-        url = f'/api/nn/{self.nn.pk}/'
+        url = f'/api/model/{self.nn.pk}/'
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         obj = response.json()
@@ -28,7 +28,7 @@ class TestNN(APITestCase):
         self.assertEqual(obj['kind'], self.nn.kind)
 
     def test_read_only(self):
-        url = f'/api/nn/{self.nn.pk}/'
+        url = f'/api/model/{self.nn.pk}/'
         response = self.client.delete(url)
         self.assertEqual(response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
         data = {'kind': 'TAG'}
@@ -36,7 +36,7 @@ class TestNN(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
 
     def test_infer(self):
-        url = f'/api/nn/{self.nn.pk}/infer/'
+        url = f'/api/model/{self.nn.pk}/infer/'
         data = {}
         response = self.client.post(url, data=data)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
