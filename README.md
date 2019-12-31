@@ -28,7 +28,7 @@ You will get:
     },
     {
         "id": 2,
-        "name": "furnitures",
+        "name": "furniture-v1",
         "kind": "DET"
     },
     {
@@ -104,7 +104,7 @@ or by visiting http://127.0.0.1:8000/api/model/2/infer/ and entering `{"url": "h
                             "region_id": 2
                         },
                         "score": 0.948721647,
-                        "label_id": 13,
+                        "label_id": 8717,
                         "threshold": 0.692,
                         "label_name": "Cushion"
                     },
@@ -119,7 +119,7 @@ or by visiting http://127.0.0.1:8000/api/model/2/infer/ and entering `{"url": "h
                             "region_id": 12
                         },
                         "score": 0.945338428,
-                        "label_id": 13,
+                        "label_id": 8717,
                         "threshold": 0.692,
                         "label_name": "Cushion"
                     },
@@ -134,7 +134,7 @@ or by visiting http://127.0.0.1:8000/api/model/2/infer/ and entering `{"url": "h
                             "region_id": 7
                         },
                         "score": 0.92992419,
-                        "label_id": 13,
+                        "label_id": 8717,
                         "threshold": 0.692,
                         "label_name": "Cushion"
                     },
@@ -149,7 +149,7 @@ or by visiting http://127.0.0.1:8000/api/model/2/infer/ and entering `{"url": "h
                             "region_id": 0
                         },
                         "score": 0.920165,
-                        "label_id": 0,
+                        "label_id": 8722,
                         "threshold": 0.565,
                         "label_name": "Sofa"
                     },
@@ -164,7 +164,7 @@ or by visiting http://127.0.0.1:8000/api/model/2/infer/ and entering `{"url": "h
                             "region_id": 16
                         },
                         "score": 0.789360404,
-                        "label_id": 13,
+                        "label_id": 8717,
                         "threshold": 0.692,
                         "label_name": "Cushion"
                     },
@@ -179,7 +179,7 @@ or by visiting http://127.0.0.1:8000/api/model/2/infer/ and entering `{"url": "h
                             "region_id": 186
                         },
                         "score": 0.755201042,
-                        "label_id": 13,
+                        "label_id": 8717,
                         "threshold": 0.692,
                         "label_name": "Cushion"
                     }

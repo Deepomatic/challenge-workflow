@@ -8,14 +8,14 @@ def add_nn(apps, schema_editor):
     # version than this migration expects. We use the historical version.
     NeuralNetwork = apps.get_model('api', 'NeuralNetwork')
     NeuralNetwork.objects.create(name='interior_vs_trash', external_id=40764, kind='CLA')
-    NeuralNetwork.objects.create(name='furnitures', external_id=40779, kind='DET')
+    NeuralNetwork.objects.create(name='furniture-v1', external_id=-1, kind='DET')
     NeuralNetwork.objects.create(name='textures', external_id=40826, kind='CLA')
     NeuralNetwork.objects.create(name="imagenet-inception-v3", external_id=-1, kind='CLA')
 
 
 def delete_nn(apps, schema_editor):
     NeuralNetwork = apps.get_model('api', 'NeuralNetwork')
-    NeuralNetwork.objects.filter(name__in=['interior_vs_trash', 'furnitures', 'textures', 'imagenet-inception-v3']).delete()
+    NeuralNetwork.objects.filter(name__in=['interior_vs_trash', 'furniture-v1', 'textures', 'imagenet-inception-v3']).delete()
 
 class Migration(migrations.Migration):
 
