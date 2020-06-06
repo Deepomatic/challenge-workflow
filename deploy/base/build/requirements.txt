@@ -1,5 +1,5 @@
 deepomatic-api==0.9.1
-Django==2.2.8
+Django==2.2.13
 djangorestframework==3.10.3
 psycopg2==2.8.4
 django-extensions==2.2.5
